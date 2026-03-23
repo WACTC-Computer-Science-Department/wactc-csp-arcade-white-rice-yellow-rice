@@ -1,0 +1,97 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Required Files Exist
+      id: required-files-exist
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Required Files Exist
+        setup-command: ''
+        command: 'test -f index.html && test -f sketch.js && test -f GameObject.js
+          && test -f  Player.js && test -f Enemy.js && test -f Projectile.js && test
+          -f GameManager.js  && test -f UI.js '
+        timeout: 10
+        max-score: 5
+    - name: Team names in README
+      id: team-names-in-readme
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Team names in README
+        setup-command: ''
+        command: 'grep -q ''Member 1'' README.md && grep -q ''Member 2'' README.md
+          && ! grep -q  ''\[Name\].*\[assigned'' README.md  '
+        timeout: 10
+        max-score: 5
+    - name: README has game name
+      id: readme-has-game-name
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: README has game name
+        setup-command: ''
+        command: "! grep -q '\\[Your Game Name\\]' README.md "
+        timeout: 10
+        max-score: 5
+    - name: GameObject base Complete
+      id: gameobject-base-complete
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: GameObject base Complete
+        setup-command: ''
+        command: " grep -q 'class GameObject' GameObject.js && grep -q 'update()'
+          GameObject.js && grep -q 'draw()' GameObject.js && grep -q 'collidesWith'
+          GameObject.js "
+        timeout: 10
+        max-score: 10
+    - name: Player extends GameObject
+      id: player-extends-gameobject
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Player extends GameObject
+        setup-command: ''
+        command: grep -q 'class Player extends GameObject' Player.js && grep -q 'super('Player.js
+        timeout: 10
+        max-score: 10
+    - name: 'Player implemented '
+      id: player-implemented
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: 'Player implemented '
+        setup-command: ''
+        command: " test $(grep -cv '^\\s*\\/\\/' Player.js | grep -cv '^\\s*$') -gt
+          25"
+        timeout: 10
+        max-score: 10
+    - name: Enemy extends GameObject
+      id: enemy-extends-gameobject
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Enemy extends GameObject
+        setup-command: ''
+        command: " grep -q 'class Enemy extends GameObject' Enemy.js && grep -q 'super('
+          Enemy.js   "
+        timeout: 10
+        max-score: 5
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        REQUIRED-FILES-EXIST_RESULTS: "${{steps.required-files-exist.outputs.result}}"
+        TEAM-NAMES-IN-README_RESULTS: "${{steps.team-names-in-readme.outputs.result}}"
+        README-HAS-GAME-NAME_RESULTS: "${{steps.readme-has-game-name.outputs.result}}"
+        GAMEOBJECT-BASE-COMPLETE_RESULTS: "${{steps.gameobject-base-complete.outputs.result}}"
+        PLAYER-EXTENDS-GAMEOBJECT_RESULTS: "${{steps.player-extends-gameobject.outputs.result}}"
+        PLAYER-IMPLEMENTED_RESULTS: "${{steps.player-implemented.outputs.result}}"
+        ENEMY-EXTENDS-GAMEOBJECT_RESULTS: "${{steps.enemy-extends-gameobject.outputs.result}}"
+      with:
+        runners: required-files-exist,team-names-in-readme,readme-has-game-name,gameobject-base-complete,player-extends-gameobject,player-implemented,enemy-extends-gameobject
