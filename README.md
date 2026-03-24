@@ -1,5 +1,5 @@
 # CSP Arcade Project
-
+# White rice, yellow rice Team, Alice Rodriguez Cepeda Jr.
 This repository serves as a template for teams to create their own classic arcade games as part of the Computer Science Principles (CSP) course using p5.js.
 
 ## Project Overview
