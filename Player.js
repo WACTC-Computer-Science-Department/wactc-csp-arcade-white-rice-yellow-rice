@@ -14,7 +14,7 @@ class Player extends GameObject {
     // TODO: Add any additional properties your player needs
     // Examples: this.abilities = [], this.score = 0, this.direction = 0
     this.score = 0;
-    
+    this.direction = 0;
   }
 
   update() {
@@ -34,8 +34,22 @@ class Player extends GameObject {
     // if (keyIsDown(DOWN_ARROW) || keyIsDown(83)) this.y += this.speed;
     //
     // Keep in bounds:
-    // this.x = constrain(this.x, this.size, width - this.size);
-    // this.y = constrain(this.y, this.size, height - this.size);
+    this.x = constrain(this.x, this.size, width - this.size);
+    this.y = constrain(this.y, this.size, height - this.size);
+   if (keyIsDown(87)){
+      this.y -= this.speed // W
+
+    }
+  if (keyIsDown(68)){
+    this.x += this.speed // D
+  }
+    if (keyIsDown(83)){
+      this.y += this.speed // S
+
+    }
+    if (keyIsDown(65)){
+      this.x -= this.speed // A
+    }
   }
 
   draw() {
@@ -44,12 +58,13 @@ class Player extends GameObject {
     ellipse(this.x, this.y, this.size * 2);
 
     // TODO: Draw health bar above player
-    // let barWidth = 30;
-    // let healthPercent = this.health / this.maxHealth;
-    // fill(100);
-    // rect(this.x - barWidth/2, this.y - this.size - 10, barWidth, 4);
-    // fill(0, 255, 100);
-    // rect(this.x - barWidth/2, this.y - this.size - 10, barWidth * healthPercent, 4);
+ let barWidth = 30;
+ let healthPercent = this.health / this.maxHealth;
+fill(100);
+ rect(this.x - barWidth/2, this.y - this.size - 10, barWidth, 4);
+  fill(0, 255, 100);
+   rect(this.x - barWidth/2, this.y - this.size - 10, barWidth * healthPercent, 4);
+
   }
 
   takeDamage(amount) {
@@ -59,6 +74,7 @@ class Player extends GameObject {
       this.alive = false;
     }
     // TODO: Add visual feedback (flash red, knockback, etc.)
+    fill(255)
   }
 
   // TODO: Add player-specific methods
