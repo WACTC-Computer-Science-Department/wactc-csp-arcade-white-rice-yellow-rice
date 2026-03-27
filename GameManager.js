@@ -1,5 +1,5 @@
 // ============================================
-// GAME MANAGER — Your name here!
+// GAME MANAGER — Alice Rodriguez Cepeda!
 // Manages all game objects, spawning, and collisions.
 // This is the brain of the game.
 // ============================================

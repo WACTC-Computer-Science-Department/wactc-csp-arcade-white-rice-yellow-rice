@@ -1,5 +1,5 @@
 // ============================================
-// UI — Your name here!
+// UI — Alice Rodriguez Cepeda!
 // Draws menus, HUD, and game over screen.
 // Uses the game manager for data.
 // ============================================
