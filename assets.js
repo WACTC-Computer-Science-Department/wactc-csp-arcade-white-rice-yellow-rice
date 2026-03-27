@@ -14,17 +14,17 @@
 // ============================================
 
 // Declare your image variables here
- let playerImg;
-let enemyImg;
-let bossImg;
-let projectileImg;
-let backgroundImg;
+// let playerImg;
+// let enemyImg;
+// let bossImg;
+// let projectileImg;
+// let backgroundImg;
 
 function loadAssets() {
   // Load your images here — they'll be ready before the game starts
- playerImg = loadImage('assets/player.png');
-  enemyImg = loadImage('assets/enemy.png');
-  bossImg = loadImage('assets/boss.png');
-  projectileImg = loadImage('assets/projectile.png');
-  backgroundImg = loadImage('assets/background.png');
+  // playerImg = loadImage('assets/player.png');
+  // enemyImg = loadImage('assets/enemy.png');
+  // bossImg = loadImage('assets/boss.png');
+  // projectileImg = loadImage('assets/projectile.png');
+  // backgroundImg = loadImage('assets/background.png');
 }
