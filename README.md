@@ -4,6 +4,9 @@ This repository serves as a template for teams to create their own classic arcad
 
 ## Project Overview
 
+
+
+
 Students will work in teams to code a classic arcade game using p5.js and collaborative coding practices on GitHub Education.
 
 ## Getting Started

@@ -1,5 +1,5 @@
 // ============================================
-// PLAYER — Your name here!
+// PLAYER — Alice Rodriguez Cepeda!
 // Extends GameObject with player controls.
 // ============================================
 
@@ -13,6 +13,8 @@ class Player extends GameObject {
 
     // TODO: Add any additional properties your player needs
     // Examples: this.abilities = [], this.score = 0, this.direction = 0
+    this.score = 0;
+    
   }
 
   update() {
