@@ -4,7 +4,9 @@
 // ============================================
 
 let gm;  // GameManager instance
-
+ function preload() {
+    loadAssets();
+ }
 function setup() {
   createCanvas(800, 500);
   textFont('monospace');
