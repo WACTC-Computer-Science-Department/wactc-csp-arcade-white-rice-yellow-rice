@@ -74,7 +74,7 @@ fill(100);
       this.alive = false;
     }
     // TODO: Add visual feedback (flash red, knockback, etc.)
-    fill(255)
+    this.color = color(255,0,0)
   }
 
   // TODO: Add player-specific methods

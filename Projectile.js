@@ -43,4 +43,11 @@ class Projectile extends GameObject {
   // Examples: class Missile extends Projectile (homing)
   //           class Laser extends Projectile (instant, no travel)
   //           class Spell extends Projectile (area damage)
+  
 }
+class Missile extends Projectile {
+
+  }
+  class Laser extends Projectile{
+
+  }
